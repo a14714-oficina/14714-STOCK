@@ -3,11 +3,13 @@
 #Função para adicionar materiais ao stock
 
 def adicionar_material(stock):
-  nome = input("Nome do material: ")
-  if nome in stock:
+    f = open("stock.txt", "a")
+    f.write(quantidade = int(input(f"Quantidade inicial de {nome}:")))
+    f.close()
+    nome = input("Nome do material: ")
+    if nome in stock:
       print("o stock ja tem esse material!")
-  else:
-      quantidade = int(input(f"Quantidade inicial de {nome}: "))
+    else:
       stock[nome] = quantidade
       print(f"{nome} adicionado com sucesso!")
 
@@ -48,6 +50,11 @@ def exibir_stock(stock):
   print("-" * 30)
   for material, quantidade in stock.items():
       print(f"{material}\t\t{quantidade}")
+
+def ver_stock():
+    f = open("stock.txt", "r")
+    print(f.read())
+
 #Função principal para gerir o menu
 def main():
   stock = {}
@@ -68,6 +75,7 @@ def main():
           atualizar_stock(stock)
       elif opcao == "4":
           exibir_stock(stock)
+          ver_stock()
       elif opcao == "5":
           print("Encerrando o programa...")
           break
@@ -76,5 +84,3 @@ def main():
 
 if __name__ == "__main__":
   main()
-var = open("<stock>.<extension>","x")
-f = open("stock.txt", "x")
